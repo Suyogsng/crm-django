@@ -1,0 +1,8 @@
+<h1>Deals</h1>
+<ul>
+{% for deal in object_list %}
+    <li>{{ deal.title }} - {{ deal.status }}</li>
+{% empty %}
+    <li>No deals yet.</li>
+{% endfor %}
+</ul>

@@ -1,0 +1,106 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Product</title>
+   <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+  <link rel="stylesheet" href="{% static 'bower_components/bootstrap/dist/css/bootstrap.min.css' %}">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'bower_components/font-awesome/css/font-awesome.min.css' %}">
+   <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'dist/css/AdminLTE.min.css' %}">
+   <!-- Select2 -->
+  <link rel="stylesheet" href="{% static 'bower_components/select2/dist/css/select2.min.css' %}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+  </head>
+   <body>
+<!-- Site wrapper -->
+<div class="wrapper">
+
+  <header class="main-header">
+
+  </header>
+
+  <!-- =============================================== -->
+
+
+  <!-- =============================================== -->
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper  col-md-4">
+
+      <!-- Default box -->
+      <div class=" col-md-4 box ">
+
+        <div class="box-header with-border">
+          <h3 class="box-title">Product Entry</h3>
+          {% if form.errors %}
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endif %}
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+              <i class="fa fa-minus"></i></button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+              <i class="fa fa-times"></i></button>
+          </div>
+        </div>
+
+        <div class="box-body">
+         <!-- <form action="../../index.html" method="post">
+         <div class="form-group has-feedback">
+        <input type="text" class="form-control" placeholder="Product Title"> -->
+        <form class="form" action="{% if object %}{% url 'crm_app:product_update' object.id %}{% else %}
+        {% url 'crm_app:product_create' %}{% endif %}" method="POST">{% csrf_token %}
+          <div class="form-group has-feedback">
+            {{ form.name }}
+        <span class="glyphicon glyphicon-gift form-control-feedback"></span>
+      </div>
+
+      <div class="form-group">
+                  <!-- <textarea class="form-control" rows="3" placeholder="Product Description"></textarea> -->
+                  {{ form.description}}
+                </div>
+                <div class="row" style="align:center">
+
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Submit</button>
+
+      </div>
+    </form>
+
+ </div>
+  <!-- /.content-wrapper -->
+
+
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 3 -->
+<script src="{% static 'bower_components/jquery/dist/jquery.min.js' %}"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="{% static 'bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+<!-- SlimScroll -->
+<script src="{% static 'bower_components/jquery-slimscroll/jquery.slimscroll.min.js' %}"></script>
+<!-- FastClick -->
+<script src="{% static 'bower_components/fastclick/lib/fastclick.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'dist/js/adminlte.min.js' %}"></script>
+<!-- Select2 -->
+<script src="{% static 'bower_components/select2/dist/js/select2.full.min.js' %}"></script>
+</body>
+</html>

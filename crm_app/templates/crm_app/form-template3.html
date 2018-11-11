@@ -1,0 +1,7 @@
+
+{% for field in form %}
+	<div class="form-group"  style="padding:10px 10px; ">
+		<label >{{ field.label_tag}}</label></br>
+		<div>{{ field }}</div>
+	</div>
+	{% endfor %}

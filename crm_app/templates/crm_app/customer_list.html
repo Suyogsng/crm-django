@@ -1,0 +1,17 @@
+{% block content %}
+  <h1>Customer List</h1>
+
+  {% if customer_list %}
+  <ul>
+
+    {% for customer in customer_list %}
+    <li>
+      {{ customer.name }}
+    </li>
+    {% endfor %}
+
+  </ul>
+  {% else %}
+    <p>There are no customer at the moment.</p>
+  {% endif %}       
+  {% endblock %}

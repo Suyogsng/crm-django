@@ -1,0 +1,9 @@
+<h1>Employee</h1>
+<ul>
+{% for emp in object_list %}
+    <li>{{ emp.username }}</li>
+    <p>{{emp.description}}</p>
+{% empty %}
+    <li>No products yet.</li>
+{% endfor %}
+</ul>

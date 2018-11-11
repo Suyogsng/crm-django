@@ -1,0 +1,17 @@
+{% block content %}
+    <h1>Transaction List</h1>
+
+    {% if transaction_list %}
+    <ul>
+
+      {% for transaction in transaction_list %}
+      <li>
+        {{ transaction.deal }}
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no transaction at the moment.</p>
+    {% endif %}       
+    {% endblock %}
